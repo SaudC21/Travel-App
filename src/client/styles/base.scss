@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+#resluts-container {
+    text-align: center;
+    line-height: 50px;
+    opacity: 0.7;
+    color: rgba(0,0,0,1);
+}
+
+#results {
+    font-size: 24px;
+    line-height: 40px;
+    background-color: #878178;
+}
+
+
+#model {
+    background-color: #E7E6E4;
+}
+
+#agreement {
+    background-color: #CFCDC9;
+}
+
+#subjectivity {
+    background-color: #E7E6E4;
+}
+
+#confidence {
+    background-color: #CFCDC9;
+}
+
+#irony {
+    background-color: #E7E6E4;
+}
+
+#score_tag {
+    background-color: #CFCDC9;
+}
+
+#form_header {
+    font-size: 36px;
+    line-height: 40px;
+    padding-bottom: 10px;
+}
