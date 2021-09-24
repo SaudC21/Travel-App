@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 /* Empty JS object to act as endpoint for all routes */
-articleData = {};
+data = {};
 
 dotenv.config();
 api_key = {
@@ -35,21 +35,3 @@ app.listen(PORT, '0.0.0.0', function () {
     console.log(`Running on localhost: ${PORT}`);
 })
 
-app.get('/getApiKey', function (req, res) {
-    res.send(api_key);
-
-})
-
-app.get('/getData', function (req, res) {
-    res.send(articleData);
-})
-
-app.post('/postData', function (req, res) {
-    articleData = req.body;
-    console.log('data posted to server');
-    return articleData;
-})
-
-app.get('/data', function (req, res) {
-    res.send(articleData);
-})

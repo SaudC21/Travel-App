@@ -34,25 +34,9 @@ module.exports = {
                api: process.env.API_KEY
             }
 
-            articleData = {};
+            data = {};
 
-            app.get('/getApiKey', function (req, res) {
-                res.send(api_key);
-            })
             
-            app.get('/getData', function (req, res) {
-                console.log('Client recieved data');
-                res.send(articleData);
-            })
-            
-            app.post('/postData', function (req, res) {
-                articleData = req.body;
-                console.log('Data posted to server');
-            })
-
-            app.get('/data', function (req, res) {
-                res.send(articleData);
-            })
         }
     },
     module: {
