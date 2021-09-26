@@ -1,5 +1,7 @@
-let GEONAMES_USERNAME, geoObject
+let GEONAMES_USERNAME
+let geonamesArray, geonamesObject, lat, lng
 const btnInput = document.getElementById('btnSubmit');
+const destination = document.getElementById('destination');
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -30,19 +32,28 @@ async function getApiCall(userName) {
     }
 }
 
+function getGeonamesArray () {
+    try {
+        getApiKey()
+            .then(async function (apiKey) {
+                geonamesObject = await getApiCall(apiKey.GEONAMES_USERNAME)
+                geonamesArray = geonamesObject.geonames[0]
+                console.log(geonamesArray)
+                lat = geonamesArray.lat
+                lng = geonamesArray.lng
+                return geonamesArray
+            })
+    } catch (error) {
+        console.log("Error: ", error)
+    }
+}
+
 async function handleSubmit() {
     console.log(`
         Handlesubmit
     `)
-    try {
-        getApiKey()
-            .then(function (apiKey) {
-                geoObject = getApiCall(apiKey.GEONAMES_USERNAME)
-                console.log(geoObject)
-            })
-    } catch (error) {
-        console.log("invalid url", error)
-    }
+    getGeonamesArray()
+    
 }
 
 btnInput.addEventListener("click", async () => {
