@@ -29,14 +29,13 @@ module.exports = {
             app.use(bodyParser.json({limit:'50mb'}));
             app.use(cors());
 
-
-            api_key = {
-               api: process.env.API_KEY
+            apiKeys = {
+                GEONAMES_USERNAME: process.env.GEONAMES_USERNAME
             }
 
-            data = {};
-
-            
+            app.get('/getApiKey', function (req, res) {
+                res.send(apiKeys);
+            })
         }
     },
     module: {

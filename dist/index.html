@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>News Article Sentiment Analysis</title>
+<link href="main.css" rel="stylesheet"></head>
+
+<body>
+
+    <header>
+        <div class="">
+            <h1>News Article</h1>
+            <h3>Sentiment Analysis</h3>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <form class="">
+                <input id="name" type="text" name="input" value=""
+                    placeholder="Please enter a URL to an article">
+                <button id="btnSubmit" type="button" name="" value="submit">Submit</button>
+            </form>
+        </section>
+        <!-- URL data  -->
+        <section id="resluts-container">
+            <div id="results"></div>
+            <div id="model"></div>
+            <div id="agreement"></div>
+            <div id="subjectivity"></div>
+            <div id="confidence"></div>
+            <div id="irony"></div>
+            <div id="score_tag"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Saud Al-Slimany, 2021.</p>
+    </footer>
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+<script type="text/javascript" src="main.js"></script></body>
+
+</html>
