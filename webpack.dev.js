@@ -20,6 +20,8 @@ module.exports = {
             const cors = require('cors');
             const dotenv = require('dotenv');
 
+            geonamesAPIEndpoint ={}
+
             dotenv.config();
 
             app.use(bodyParser.urlencoded({
@@ -36,6 +38,12 @@ module.exports = {
 
             app.get('/getApiKey', function (req, res) {
                 res.send(apiKeys);
+            })
+
+            app.post('/postGeonamesAPI', function (req, res) {
+                geonamesAPIEndpoint = req.body;
+                console.log('geonamesAPI data posted to server');
+                return geonamesAPIEndpoint;
             })
         }
     },

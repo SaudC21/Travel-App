@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 /* Empty JS object to act as endpoint for all routes */
-data = {};
+geonamesAPIEndpoint = {};
 
 // Geonames username
 apiKeys = {
@@ -39,4 +39,10 @@ app.listen(PORT, '0.0.0.0', function () {
 
 app.get('/getApiKey', function (req, res) {
     res.send(apiKeys);
+})
+
+app.post('/postGeonamesAPI', function (req, res) {
+    geonamesAPIEndpoint = req.body;
+    console.log('geonamesAPI data posted to server:: ', geonamesAPIEndpoint);
+    return geonamesAPIEndpoint;
 })
