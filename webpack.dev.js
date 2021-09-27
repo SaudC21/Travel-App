@@ -42,8 +42,13 @@ module.exports = {
 
             app.post('/postGeonamesAPI', function (req, res) {
                 geonamesAPIEndpoint = req.body;
-                console.log('geonamesAPI data posted to server');
-                return geonamesAPIEndpoint;
+                console.log(geonamesAPIEndpoint)
+                res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
+                )
+            })
+
+            app.get('/getGeonamesAPI', function (req, res) {
+                res.send(geonamesAPIEndpoint);
             })
         }
     },

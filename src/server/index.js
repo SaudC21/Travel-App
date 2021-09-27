@@ -43,6 +43,9 @@ app.get('/getApiKey', function (req, res) {
 
 app.post('/postGeonamesAPI', function (req, res) {
     geonamesAPIEndpoint = req.body;
-    console.log('geonamesAPI data posted to server:: ', geonamesAPIEndpoint);
     return geonamesAPIEndpoint;
+})
+
+app.get('/getGeonamesAPI', function (req, res) {
+    res.send(geonamesAPIEndpoint);
 })

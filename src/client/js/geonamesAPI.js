@@ -1,8 +1,6 @@
-import { handleSubmit } from './js/formHandler'
-
-let GEONAMES_USERNAME
 let geonamesArray, geonamesObject, lat, lng
-const destination = document.getElementById('destination');
+let destination = document.getElementById('destination');
+let cordinates = {}
 
 // Function to GET the api key from server side
 async function getApiKey() {
@@ -17,48 +15,63 @@ async function getApiKey() {
 
 // Function to fetch api data
 async function getApiCall(userName) {
-    console.log(destination)
-    const apiCall = `http://api.geonames.org/searchJSON?q=${destination}&maxRows=1&username=${userName}`;
-    const response = await fetch(apiCall);
-    try {
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.log("error: ", error);
+    if (destination.value == "") {
+        alert('Please enter your destination')
+    } else {
+        const apiCall = `http://api.geonames.org/searchJSON?q=${destination.value}&maxRows=1&username=${userName}`;
+        const response = await fetch(apiCall);
+        try {
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.log("error: ", error);
+        }
     }
 }
 
 // Function to POST data to server
-const postArticle = async (url = '', data = {}) => {
+const postCordinates = async (url = '', data = {}) => {
     const response = await fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header        
-    });
+        body: JSON.stringify(data), // body data type must match "Content-Type" header       
+    })
+    try {
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.log('Error: ', error)
+    }
 }
 
-function getGeonamesArray () { 
+// This function will return the cordinates
+async function getCordinates(apiKey) {
+    geonamesObject = await getApiCall(apiKey.GEONAMES_USERNAME)
+    geonamesArray = geonamesObject.geonames[0]
+    lat = geonamesArray.lat
+    lng = geonamesArray.lng
+    cordinates = {
+        latitude: lat,
+        lngitude: lng
+    }
+    return cordinates
+}
+
+async function cordinatesHandler() {
     try {
-        console.log(destination)
         getApiKey()
             .then(async function (apiKey) {
-                geonamesObject = await getApiCall(apiKey.GEONAMES_USERNAME)
-                geonamesArray = geonamesObject.geonames[0]
-                console.log(geonamesArray)
-                lat = geonamesArray.lat
-                lng = geonamesArray.lng
-                return geonamesObject
+                return await getCordinates(apiKey)
             })
-            .then(function (data) {
-                console.log('Post data from client')
-                postArticle('/postGeonamesAPI', data)
+            .then(async function (data) { //To save the geonamesArray in the server
+                return await postCordinates('/postGeonamesAPI', data)
             })
     } catch (error) {
         console.log("Error: ", error)
     }
 }
 
-export { getGeonamesArray }
+export { cordinatesHandler }
