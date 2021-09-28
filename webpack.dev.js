@@ -20,7 +20,7 @@ module.exports = {
             const cors = require('cors');
             const dotenv = require('dotenv');
 
-            geonamesAPIEndpoint ={}
+            let geonamesAPIEndpoint, weatherAPIEndpoint, pixybayAPIEndpoint
 
             dotenv.config();
 
@@ -33,22 +33,42 @@ module.exports = {
             app.use(cors());
 
             apiKeys = {
-                GEONAMES_USERNAME: process.env.GEONAMES_USERNAME
+                GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
+                WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
+                PIXYBAY_KEY: process.env.PIXYBAY_KEY
             }
 
             app.get('/getApiKey', function (req, res) {
                 res.send(apiKeys);
             })
 
-            app.post('/postGeonamesAPI', function (req, res) {
+            app.post('/postCordinates', function (req, res) {
                 geonamesAPIEndpoint = req.body;
                 console.log(geonamesAPIEndpoint)
                 res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
                 )
             })
 
-            app.get('/getGeonamesAPI', function (req, res) {
+            app.get('/getCordinates', function (req, res) {
                 res.send(geonamesAPIEndpoint);
+            })
+
+            app.post('/postweather', function (req, res) {
+                weatherAPIEndpoint = req.body;
+                console.log(weatherAPIEndpoint)
+                res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
+                )
+            })
+            
+            app.get('/getImgURL', function (req, res) {
+                res.send(pixybayAPIEndpoint);
+            })
+            
+            app.post('/postImgURL', function (req, res) {
+                pixybayAPIEndpoint = req.body;
+                console.log(pixybayAPIEndpoint)
+                res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
+                )
             })
         }
     },
