@@ -13,7 +13,7 @@ async function getCordinates(apiKey) {
     lng = geonamesArray.lng
     cordinates = {
         latitude: lat,
-        lngitude: lng
+        lngitude: lng,
     }
     return cordinates
 }
