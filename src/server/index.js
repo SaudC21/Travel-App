@@ -5,13 +5,13 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 /* Empty JS object to act as endpoint for all routes */
-let geonamesAPIEndpoint, weatherAPIEndpoint, pixybayAPIEndpoint
+let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint
 
 // API keys
 apiKeys = {
     GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
     WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
-    PIXYBAY_KEY: process.env.PIXYBAY_KEY
+    PIXABAY_KEY: process.env.PIXABAY_KEY
 }
 
 dotenv.config();
@@ -62,12 +62,12 @@ app.post('/postweather', function (req, res) {
 })
 
 app.get('/getImgURL', function (req, res) {
-    res.send(pixybayAPIEndpoint);
+    res.send(pixabayAPIEndpoint);
 })
 
 app.post('/postImgURL', function (req, res) {
-    pixybayAPIEndpoint = req.body;
-    console.log(pixybayAPIEndpoint)
+    pixabayAPIEndpoint = req.body;
+    console.log(pixabayAPIEndpoint)
     res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
     )
 })

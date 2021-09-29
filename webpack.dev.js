@@ -19,7 +19,7 @@ module.exports = {
             const cors = require('cors');
             const dotenv = require('dotenv');
 
-            let geonamesAPIEndpoint, weatherAPIEndpoint, pixybayAPIEndpoint
+            let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint
 
             dotenv.config();
 
@@ -34,7 +34,7 @@ module.exports = {
             apiKeys = {
                 GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
                 WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
-                PIXYBAY_KEY: process.env.PIXYBAY_KEY
+                PIXABAY_KEY: process.env.PIXABAY_KEY
             }
 
             app.get('/getApiKey', function (req, res) {
@@ -60,12 +60,12 @@ module.exports = {
             })
             
             app.get('/getImgURL', function (req, res) {
-                res.send(pixybayAPIEndpoint);
+                res.send(pixabayAPIEndpoint);
             })
             
             app.post('/postImgURL', function (req, res) {
-                pixybayAPIEndpoint = req.body;
-                console.log(pixybayAPIEndpoint)
+                pixabayAPIEndpoint = req.body;
+                console.log(pixabayAPIEndpoint)
                 res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
                 )
             })

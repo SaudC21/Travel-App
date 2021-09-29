@@ -11,16 +11,12 @@ async function getApiKey(route) {
 
 // Function to fetch api data
 async function getApiCall(apiCall) {
-    if (destination.value == "") {
-        alert('Please enter your destination')
-    } else {
-        const response = await fetch(apiCall);
-        try {
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.log("error: ", error);
-        }
+    const response = await fetch(apiCall);
+    try {
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log("error: ", error);
     }
 }
 

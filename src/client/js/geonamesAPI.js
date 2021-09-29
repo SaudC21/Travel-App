@@ -1,6 +1,6 @@
 import { getApiKey, getApiCall, postFunction } from './requests'
 
-let geonamesArray, geonamesObject, lat, lng
+let geonamesArray, geonamesObject, lat, lng, cityName, countryName
 let destination = document.getElementById('destination');
 let cordinates = {}
 
@@ -11,10 +11,16 @@ async function getCordinates(apiKey) {
     geonamesArray = geonamesObject.geonames[0]
     lat = geonamesArray.lat
     lng = geonamesArray.lng
+    cityName = geonamesArray.name
+    countryName = geonamesArray.countryName
+    console.log(geonamesArray)
     cordinates = {
         latitude: lat,
         lngitude: lng,
+        city: cityName,
+        country: countryName
     }
+    console.log(cordinates)
     return cordinates
 }
 
