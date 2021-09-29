@@ -2,7 +2,6 @@ import { cordinatesHandler } from './geonamesAPI'
 import { weatherHandler } from './weatherBitAPI'
 import { imageHandler } from './pixabayAPI'
 
-let cordinates = {}
 let lat, lng
 
 async function handleSubmit() {
