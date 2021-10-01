@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "Saud Al-Slimany",
   "license": "ISC",
-  "description": "This project aims to build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. When a user submits a URL of an article, the web page then displays sentiment analysis returned from meaning cloud API, based on the contents of the article.",
+  "description": "This project is the final capstone project for Udacity's Front End Web Developer Nanodegree program. The project combines the learned knowledge from all of the lessons and projects to create a travel application that provides the user information based on their selected destination and time of travel.",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

@@ -1,16 +1,11 @@
-# Evaluate a News Article with NLP
- a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites.
+# Travel Application
+
+This project is the final capstone project for Udacity's Front End Web Developer Nanodegree program.
 
 ## Overview
 
-The goal of this project:
-- Setting up Webpack
-- Sass styles
-- Webpack Loaders and Plugins
-- Creating layouts and page design
-- Service workers
-- Using APIs and creating requests to external urls
+The project combines the learned knowledge from all of the lessons and projects to create a travel application that provides the user information based on their selected destination and time of travel.
 
 ## Author
 
-**Saud Al-Slimany**  - [Saud Al-Slimany](https://github.com/SaudC21)
+**Saud Al-Slimany**  - [Saud Al-Slimany](https://www.linkedin.com/in/saudalslimany/)

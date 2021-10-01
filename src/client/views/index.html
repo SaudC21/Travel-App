@@ -9,29 +9,30 @@
 <body>
 
     <header>
-        <div class="">
-            <h1>Travel App</h1>
+        <div class="header-background">
+            <section class="form-container">
+                <form class="main-form">
+                    <h3>Explore your next destination</h3>
+                    <input id="destination" type="text" name="input" value="" placeholder="Location">
+                    <input id="departure" type="date" name="input" value="" placeholder="Departure"
+                        onkeydown="return false" min="" max="2030-12-31">
+                    <button id="btnSubmit" type="button" name="" value="search">Search</button>
+                </form>
+            </section>
         </div>
     </header>
 
     <main>
-        <section>
-            <form class="">
-                <h3>Explore your next destination</h3>
-                <input id="destination" type="text" name="input" value="" placeholder="Your destination">
-                <input id="departure" type="date" name="input" value="" placeholder="Departure" onkeydown="return false" min="" max="2030-12-31" >
-                <button id="btnSubmit" type="button" name="" value="search">Search</button>
-            </form>
-        </section>
         <!-- URL data  -->
         <section id="resluts-container">
-            <div id="results"></div>
-            <div id="model"></div>
-            <div id="agreement"></div>
-            <div id="subjectivity"></div>
-            <div id="confidence"></div>
-            <div id="irony"></div>
-            <div id="score_tag"></div>
+            <h1>Your wonderful destination</h1>
+            <div id="destination-result">
+                <img class="card-img" src="./assets/images/amd.jpg" alt="AMD CPUs">
+                <div class="card-content">
+                    <h2 class="card-header">CPUs Gen</h2>
+                    <p class="card-text">How many Central Processing Unit generations are there?</p>
+                </div>
+            </div>
         </section>
     </main>
 
