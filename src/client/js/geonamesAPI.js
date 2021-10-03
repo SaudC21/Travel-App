@@ -13,7 +13,6 @@ let cordinates = {
 async function getCordinates(apiKey) {
     const apiCall = `http://api.geonames.org/searchJSON?q=${destination.value}&maxRows=1&username=${apiKey.GEONAMES_USERNAME}`;
     geonamesObject = await getApiCall(apiCall)
-    console.log(geonamesObject.totalResultsCount)
     if (geonamesObject.totalResultsCount == 0) {
         alert('Please re-enter a correct destination')
         return cordinates
@@ -43,7 +42,9 @@ async function cordinatesHandler() {
             })
             .then(async function (data) { //To save the geonamesArray in the server
                 if (cordinates.city == 'notFound') {
-                    return await postFunction('/postCordinates', cordinates) // To-do: Post a not found object
+                    await postFunction('/postCordinates', cordinates) // To-do: Post a not found object
+                    console.log('wrong city')
+                    return 
                 } else {
                     return await postFunction('/postCordinates', data)
                 }
