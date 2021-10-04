@@ -8,7 +8,6 @@ let weather = {
 async function getCordinates() {
     let response = await fetch('/getCordinates')
     try {
-        console.log(response) // Stopped here to get an empty object from server
         const data = await response.json()
         return data;
     } catch (error) {
@@ -22,7 +21,7 @@ async function getWeather(apiKey) {
     if (cordinates.latitude == 'notFound') {
         return weather
     } else {
-        const apiCall = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${cordinates.latitude}&lon=${cordinates.lngitude}&key=${apiKey.WEAHTERBIT_KEY}`;
+        let apiCall = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${cordinates.latitude}&lon=${cordinates.lngitude}&key=${apiKey.WEAHTERBIT_KEY}`;
         weatherObject = await getApiCall(apiCall)
         weather = weatherObject.data[0].weather
         console.log(weather)
@@ -38,8 +37,12 @@ async function weatherHandler() {
                 return await getWeather(apiKey)
             })
             .then(async function (data) { //To save the geonamesArray in the server
-                if (data.description == 'notFound')
-                return await postFunction('/postweather', data)
+                if (data.description == 'notFound') {
+                    await postFunction('/postweather', data)
+                    return
+                } else {
+                    return await postFunction('/postweather', data)
+                }
             })
     } catch (error) {
         console.log("Error: ", error)

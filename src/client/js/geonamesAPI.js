@@ -18,16 +18,12 @@ async function getCordinates(apiKey) {
         return cordinates
     } else {
         geonamesArray = geonamesObject.geonames[0]
-        lat = geonamesArray.lat
-        lng = geonamesArray.lng
-        cityName = geonamesArray.name
-        countryName = geonamesArray.countryName
         console.log(geonamesArray)
         cordinates = {
-            latitude: lat,
-            lngitude: lng,
-            city: cityName,
-            country: countryName
+            latitude: geonamesArray.lat,
+            lngitude: geonamesArray.lng,
+            city: geonamesArray.name,
+            country: geonamesArray.countryName
         }
         return cordinates
     }

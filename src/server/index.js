@@ -61,8 +61,8 @@ app.post('/postweather', function (req, res) {
     )
 })
 
-app.get('/getImgURL', function (req, res) {
-    res.send(pixabayAPIEndpoint);
+app.get('/getWeather', function (req, res) {
+    res.send(weatherAPIEndpoint);
 })
 
 app.post('/postImgURL', function (req, res) {
@@ -70,4 +70,8 @@ app.post('/postImgURL', function (req, res) {
     console.log(pixabayAPIEndpoint)
     res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
     )
+})
+
+app.get('/getImgURL', function (req, res) {
+    res.send(pixabayAPIEndpoint);
 })
