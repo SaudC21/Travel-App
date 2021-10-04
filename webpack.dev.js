@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const fileLoader = require('file-loader')
 
 module.exports = {
     entry: './src/client/index.js',
@@ -28,7 +29,7 @@ module.exports = {
                 extended: true,
                 parameterLimit: 50000
             }));
-            app.use(bodyParser.json({limit:'50mb'}));
+            app.use(bodyParser.json({ limit: '50mb' }));
             app.use(cors());
 
             apiKeys = {
@@ -58,11 +59,11 @@ module.exports = {
                 res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
                 )
             })
-            
+
             app.get('/getImgURL', function (req, res) {
                 res.send(pixabayAPIEndpoint);
             })
-            
+
             app.post('/postImgURL', function (req, res) {
                 pixabayAPIEndpoint = req.body;
                 console.log(pixabayAPIEndpoint)
@@ -81,6 +82,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(gif|svg|jpg|png)$/,
+                loader: "file-loader",
             }
         ]
     },
