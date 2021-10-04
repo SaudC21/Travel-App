@@ -2,7 +2,8 @@ import { cordinatesHandler } from './geonamesAPI'
 import { weatherHandler } from './weatherBitAPI'
 import { imageHandler } from './pixabayAPI'
 
-let lat, lng
+let destination = document.getElementById('destination');
+let departure = document.getElementById('departure');
 
 // To get cordinates from server
 async function getCordinates() {

@@ -42,9 +42,8 @@ async function cordinatesHandler() {
             })
             .then(async function (data) { //To save the geonamesArray in the server
                 if (cordinates.city == 'notFound') {
-                    await postFunction('/postCordinates', cordinates) // To-do: Post a not found object
-                    console.log('wrong city')
-                    return 
+                    await postFunction('/postCordinates', cordinates)
+                    return
                 } else {
                     return await postFunction('/postCordinates', data)
                 }

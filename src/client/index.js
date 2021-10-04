@@ -12,30 +12,48 @@ let today
 
 // It returns the departure date diference with the current date
 function countdown() {
+    
+    departureDate.setAttribute('min', today)
+    console.log(departureDate.value)
+
+    return countdown
+}
+
+// a and b are javascript Date objects
+function dateDiffInDays(a, b) {
+    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    // Discard the time and time-zone information.
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    console.log(utc1)
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    console.log(utc2)
+
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
+
+function getDifference() {
+
     today = new Date()
     let dd = String(today.getDate()).padStart(2, '0')
     let mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
     let yyyy = today.getFullYear()
 
     today = yyyy + '-' + mm + '-' + dd
-    departureDate.setAttribute('min', today)
-
-    return countdown
-}
-
-countdown()
-
-function getDifference() { // To-do Make the 'departureDate' format like this mm/dd/yyyy to subtract it from 'today'
+    console.log(today)
     console.log(departureDate.value)
-    const diffTime = Math.abs(departureDate - today)
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-    console.log(diffTime + " milliseconds")
-    console.log(diffDays + " days")
+    // test it
+    let difference = dateDiffInDays(new Date(today), new Date(departureDate.value));
+    console.log(difference)
 }
 
 btnInput.addEventListener("click", async () => {
+    // countdown()
+    getDifference()
     if (destination.value == "") {
         alert('Please enter your destination')
+    } else if (departureDate.value == "") {
+        alert('Please enter your departure date')
     } else {
         handleSubmit()
         // getDifference()
