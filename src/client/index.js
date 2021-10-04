@@ -4,11 +4,19 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 import { handleSubmit } from './js/formHandler'
+import { getCordinates } from './js/formHandler'
 
 const btnInput = document.getElementById('btnSubmit')
 const departureDate = document.getElementById('departure')
 const destination = document.getElementById('destination')
-let today, remDays, weather
+let today, remDays, weather, cordinates, imgURL
+const cardContainer = document.getElementById('card-container')
+const cityImg = document.getElementById('cityImg');
+const destinationTitle = document.getElementById('desTitle');
+const countdown = document.getElementById('countdown');
+const weatherIcon = document.getElementById('weatherIcon');
+const temp = document.getElementById('temp');
+const description = document.getElementById('description');
 
 // a and b are javascript Date objects
 function dateDiffInDays(a, b) {
@@ -35,18 +43,6 @@ function getDifference() {
     return difference
 }
 
-// Here to handle any click for the button
-btnInput.addEventListener("click", async () => {
-    if (destination.value == "") {
-        alert('Please enter your destination')
-    } else if (departureDate.value == "") {
-        alert('Please enter your departure date')
-    } else {
-        handleSubmit()
-        updatUI()
-    }
-})
-
 // To get weather from server
 async function getWeather() {
     let response = await fetch('/getWeather')
@@ -58,8 +54,60 @@ async function getWeather() {
     }
 }
 
+// To get imgURL from server
+async function getImgURL() {
+    let response = await fetch('/getImgURL')
+    try {
+        const data = await response.json()
+        return data;
+    } catch (error) {
+        console.log('ERROR: ', error)
+    }
+}
 
 // To update to user interface for the user to see the information
-function updatUI() {
-    
+async function updatUI() {
+    console.log(`
+        updatUI Method
+    `)
+    erase()
+    weather = await getWeather()
+    cordinates = await getCordinates()
+    console.log(cordinates)
+    imgURL = await getImgURL()
+    console.log(imgURL)
+    remDays = getDifference()
+
+    cardContainer.style = 'background-color: #778592;';
+    cityImg.src = imgURL.url
+    countdown.innerHTML = `Your Distination in ${remDays} days`
+    description.innerHTML = weather.weather.description
+    temp.innerHTML = `${Math.round(weather.temp)}°C`
+    if (cordinates.city.length + cordinates.country.length <= 20) {
+        destinationTitle.innerHTML = `${cordinates.city} ${cordinates.country}`
+    } else {
+        destinationTitle.innerHTML = `${cordinates.city} ${cordinates.countryCode}`
+    }
 }
+
+function erase() {
+    cardContainer.style = ``;
+    cityImg.src = ``
+    countdown.innerHTML = ``
+    description.innerHTML = ``
+    temp.innerHTML = ``
+    destinationTitle.innerHTML = ``
+}
+
+// Here to handle any click for the button
+btnInput.addEventListener("click", async () => {
+    if (destination.value == "") {
+        alert('Please enter your destination')
+    } else if (departureDate.value == "") {
+        alert('Please enter your departure date')
+    } else {
+        handleSubmit()
+    }
+})
+
+export { updatUI }

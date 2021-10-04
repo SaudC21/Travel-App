@@ -3,35 +3,37 @@
 
 <head>
     <meta charset="utf-8">
-    <title>News Article Sentiment Analysis</title>
+    <title>Travel App</title>
 <link href="main.css" rel="stylesheet"></head>
 
 <body>
 
     <header>
-        <div class="">
-            <h1>News Article</h1>
-            <h3>Sentiment Analysis</h3>
+        <div class="header-background">
+            <section class="form-container">
+                <form class="main-form">
+                    <h2>Explore your next destination</h2>
+                    <input id="destination" type="text" name="input" value="" placeholder="Location">
+                    <input id="departure" type="date" name="input" value="" placeholder="Departure"
+                        onkeydown="return false" min="" max="2030-12-31">
+                    <button id="btnSubmit" type="button" name="" value="search">Search</button>
+                </form>
+            </section>
         </div>
     </header>
 
     <main>
-        <section>
-            <form class="">
-                <input id="name" type="text" name="input" value=""
-                    placeholder="Please enter a URL to an article">
-                <button id="btnSubmit" type="button" name="" value="submit">Submit</button>
-            </form>
-        </section>
-        <!-- URL data  -->
-        <section id="resluts-container">
-            <div id="results"></div>
-            <div id="model"></div>
-            <div id="agreement"></div>
-            <div id="subjectivity"></div>
-            <div id="confidence"></div>
-            <div id="irony"></div>
-            <div id="score_tag"></div>
+        <section id="card-container" style="">
+            <img id="cityImg" src="">
+            <article>
+                <h2 id="desTitle"></h2>
+                <h3 id="countdown"></h3>
+                <img id="weatherIcon" src="">
+                <div id="info">
+                    <h3 id="temp"></h3>
+                    <h3 id="description"></h3>
+                </div>
+            </article>
         </section>
     </main>
 

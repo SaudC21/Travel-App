@@ -1,6 +1,7 @@
 import { cordinatesHandler } from './geonamesAPI'
 import { weatherHandler } from './weatherBitAPI'
 import { imageHandler } from './pixabayAPI'
+import { updatUI } from '../index'
 
 let destination = document.getElementById('destination');
 let departure = document.getElementById('departure');
@@ -28,6 +29,7 @@ async function handleSubmit() {
         await weatherHandler()
         await imageHandler()
     }    
+    updatUI()
 }
 
-export { handleSubmit }
+export { handleSubmit, getCordinates }

@@ -1,18 +1,9 @@
 import { getApiKey, getApiCall, postFunction } from './requests'
+import { getCordinates } from './formHandler'
+
 let cordinates, weatherObject
 let weather = { 
     description: 'notFound'
-}
-
-// To get cordinates from server
-async function getCordinates() {
-    let response = await fetch('/getCordinates')
-    try {
-        const data = await response.json()
-        return data;
-    } catch (error) {
-        console.log('ERROR: ', error)
-    }
 }
 
 // This function will return the cordinates
@@ -23,8 +14,7 @@ async function getWeather(apiKey) {
     } else {
         let apiCall = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${cordinates.latitude}&lon=${cordinates.lngitude}&key=${apiKey.WEAHTERBIT_KEY}`;
         weatherObject = await getApiCall(apiCall)
-        weather = weatherObject.data[0].weather
-        console.log(weather)
+        weather = weatherObject.data[0]
         return weather
     }
 }

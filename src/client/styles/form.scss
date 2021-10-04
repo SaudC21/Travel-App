@@ -30,8 +30,7 @@ button {
     border-radius: 5px;
 }
 
-h3 {
-    margin-bottom: 20px;
-    font-size: 36px;
-    font-weight: 500;
+#btnSubmit:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.9);
+    cursor: pointer;
 }

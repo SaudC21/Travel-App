@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint
 
 // API keys
-apiKeys = {
+let apiKeys = {
     GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
     WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
     PIXABAY_KEY: process.env.PIXABAY_KEY
@@ -34,11 +34,14 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3030;
 app.listen(PORT, '0.0.0.0', function () {
     console.log(`Running on localhost: ${PORT}`);
 })
 
+print()
+
+// -------- GET/POST requestes -------- //
 app.get('/getApiKey', function (req, res) {
     res.send(apiKeys);
 })
@@ -75,3 +78,9 @@ app.post('/postImgURL', function (req, res) {
 app.get('/getImgURL', function (req, res) {
     res.send(pixabayAPIEndpoint);
 })
+
+function print() {
+    console.log(`
+        Server Side
+    `)
+}

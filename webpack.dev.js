@@ -32,12 +32,15 @@ module.exports = {
             app.use(bodyParser.json({ limit: '50mb' }));
             app.use(cors());
 
-            apiKeys = {
+            let apiKeys = {
                 GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
                 WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
                 PIXABAY_KEY: process.env.PIXABAY_KEY
             }
 
+            print()
+
+            // -------- GET/POST requestes -------- //
             app.get('/getApiKey', function (req, res) {
                 res.send(apiKeys);
             })
@@ -74,6 +77,12 @@ module.exports = {
             app.get('/getImgURL', function (req, res) {
                 res.send(pixabayAPIEndpoint);
             })
+
+            function print() {
+                console.log(`
+                    Server Side
+                `)
+            }
         }
     },
     module: {

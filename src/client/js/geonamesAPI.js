@@ -6,7 +6,8 @@ let cordinates = {
     latitude: 'notFound',
     lngitude: 'notFound',
     city: 'notFound',
-    country: 'notFound'
+    country: 'notFound',
+    countryCode: 'notFound'
 }
 
 // This function will return the cordinates
@@ -18,12 +19,12 @@ async function getCordinates(apiKey) {
         return cordinates
     } else {
         geonamesArray = geonamesObject.geonames[0]
-        console.log(geonamesArray)
         cordinates = {
             latitude: geonamesArray.lat,
             lngitude: geonamesArray.lng,
             city: geonamesArray.name,
-            country: geonamesArray.countryName
+            country: geonamesArray.countryName,
+            countryCode: geonamesArray.countryCode
         }
         return cordinates
     }
