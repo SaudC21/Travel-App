@@ -20,7 +20,7 @@ module.exports = {
             const cors = require('cors');
             const dotenv = require('dotenv');
 
-            let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint
+            let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint, remainingDays
 
             dotenv.config();
 
@@ -76,6 +76,17 @@ module.exports = {
 
             app.get('/getImgURL', function (req, res) {
                 res.send(pixabayAPIEndpoint);
+            })
+
+            app.post('/postCountdown', function (req, res) {
+                weatherAPIEndpoint = req.body;
+                console.log(remainingDays)
+                res.end(JSON.stringify({ status: 200, message: "success", geonamesAPIEndpoint: geonamesAPIEndpoint })
+                )
+            })
+
+            app.get('/getCountdown', function (req, res) {
+                res.send(remainingDays);
             })
 
             function print() {

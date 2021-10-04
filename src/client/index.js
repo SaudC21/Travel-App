@@ -1,3 +1,4 @@
+import { postFunction } from './requests'
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/footer.scss'
@@ -67,6 +68,9 @@ async function getImgURL() {
     }
 }
 
+// Post remaining days to server
+
+
 // To update to user interface for the user to see the information
 async function updatUI() {
     console.log(`
@@ -79,6 +83,7 @@ async function updatUI() {
     imgURL = await getImgURL()
     console.log(imgURL)
     remDays = getDifference()
+    await postFunction('/postCountdown', data)
 
     cardContainer.style = 'background-color: #778592;';
     cityImg.src = imgURL.url

@@ -13,9 +13,6 @@ let cordinates = {
 
 // This function will return the cordinates
 async function getCordinates(apiKey) {
-    console.log(`
-        GeonamesAPI L16 ${apiKey.GEONAMES_USERNAME}
-    `)
     const apiCall = `http://api.geonames.org/searchJSON?q=${destination.value}&maxRows=1&username=${apiKey.GEONAMES_USERNAME}`;
     geonamesObject = await getApiCall(apiCall)
     if (geonamesObject.totalResultsCount == 0) {

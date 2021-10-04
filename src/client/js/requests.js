@@ -5,7 +5,6 @@ async function getApiKey(route) {
     const response = await fetch(route);
     try {
         const data = await response.json();
-        console.log('req.js L6: ', data)
         return data;
     } catch (error) {
         console.log("ERORR", error);
