@@ -7,14 +7,14 @@ const dotenv = require('dotenv');
 /* Empty JS object to act as endpoint for all routes */
 let geonamesAPIEndpoint, weatherAPIEndpoint, pixabayAPIEndpoint
 
+dotenv.config();
+
 // API keys
 let apiKeys = {
     GEONAMES_USERNAME: process.env.GEONAMES_USERNAME,
     WEAHTERBIT_KEY: process.env.WEAHTERBIT_KEY,
     PIXABAY_KEY: process.env.PIXABAY_KEY
 }
-
-dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -34,14 +34,18 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-const PORT = process.env.PORT || 3030;
-app.listen(PORT, '0.0.0.0', function () {
-    console.log(`Running on localhost: ${PORT}`);
-})
+const PORT = process.env.PORT || 5555;
+const server = app.listen(PORT, '0.0.0.0', function() {
+    console.log(`Running on localhost: ${PORT}`)
+}) 
 
 print()
 
 // -------- GET/POST requestes -------- //
+app.get('/getgeonamesAPIKey', function (req, res) {
+    res.send(apiKeys.GEONAMES_USERNAME);
+})
+
 app.get('/getApiKey', function (req, res) {
     res.send(apiKeys);
 })
@@ -84,3 +88,5 @@ function print() {
         Server Side
     `)
 }
+
+module.exports = app

@@ -2,6 +2,7 @@ import { cordinatesHandler } from './geonamesAPI'
 import { weatherHandler } from './weatherBitAPI'
 import { imageHandler } from './pixabayAPI'
 import { updatUI } from '../index'
+import 'regenerator-runtime/runtime'
 
 let destination = document.getElementById('destination');
 let departure = document.getElementById('departure');

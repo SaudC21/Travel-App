@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime'
+
 // Function to GET the api key from server side
 async function getApiKey(route) {
     const response = await fetch(route);

@@ -1,4 +1,5 @@
 import { getApiKey, getApiCall, postFunction } from './requests'
+import 'regenerator-runtime/runtime'
 
 let geonamesArray, geonamesObject, lat, lng, cityName, countryName
 let destination = document.getElementById('destination');

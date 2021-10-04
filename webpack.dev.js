@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const fileLoader = require('file-loader')
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['regenerator-runtime/runtime.js', './src/client/index.js'],
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',

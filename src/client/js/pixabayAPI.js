@@ -1,5 +1,7 @@
 import { getApiKey, getApiCall, postFunction } from './requests'
 import { getCordinates } from './formHandler'
+import 'regenerator-runtime/runtime'
+
 let destination = document.getElementById('destination');
 
 let cordinates, PixabayObject

@@ -5,6 +5,8 @@ import './styles/form.scss'
 import './styles/header.scss'
 import { handleSubmit } from './js/formHandler'
 import { getCordinates } from './js/formHandler'
+import 'regenerator-runtime/runtime'
+
 
 const btnInput = document.getElementById('btnSubmit')
 const departureDate = document.getElementById('departure')

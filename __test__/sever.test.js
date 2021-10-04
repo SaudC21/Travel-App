@@ -1,9 +1,13 @@
 // Import the js file to test
-import { print } from "../src/server/index";
+import 'regenerator-runtime/runtime'
+const req = require('supertest')
+const app = require('../src/server/index')
 // The describe() function
-describe("Testing printing on server side", () => {
-   // The test() function
-   test("Testing the print() function", () => {
-      expect(print).toBeDefined();
+describe("Get", () => {
+   // The it() function
+   it("function ", async () => {
+      const res = await req(app)
+         .get('/getgeonamesAPIKey')
+         .expect('saudc21')
    })
 });
