@@ -1,13 +1,13 @@
-# Travel Application
+# Udacity Front End Nanodegree - Travel App Project
 
 This project is the final capstone project for Udacity's Front End Web Developer Nanodegree program.
 
-## Overview
+## Project Overview
 
-The project combines the learned knowledge from all of the lessons and projects to create a travel application that provides the user information based on their selected destination and time of travel.
+This project aims to give me the opportunity to put all of the skills we've learned into one project to build my own custom travel app. Due to the nature of this course, it is very JavaScript heavy, but I worked on creating clean and appealing HTML/CSS. Fruthermore, targeting the DOM, working with objects, and retrieving data from 3 APIs in which one of those is reliant on another to work. Finally, this is all going to be done in a Webpack environment, using an express server, and wrapped up with service workers.
 
 ## Way to Stand Out
-Pull in an image for the country from Pixabay API when the entered location brings up no results.
+I Pulled in an image for the country from Pixabay API when the entered location brings up no results.
 
 ## Author
 
